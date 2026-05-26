@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Selects mantêm o fundo escuro em todos os browsers */
+select option {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+/* Remove o outline e highlight padrão do browser no mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Scrollbar estilo terminal */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0c0c;
+}
+::-webkit-scrollbar-thumb {
+  background: #22D3EE40;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #22D3EE80;
+}
