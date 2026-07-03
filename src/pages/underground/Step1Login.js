@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../../firebase-config';
 
-// ─── Grade de fundo cyberpunk (Mais visível) ─────────────────────────────────
 const CyberGrid = () => (
   <div
     className="fixed inset-0 pointer-events-none z-0 opacity-[0.4]"
@@ -15,7 +14,6 @@ const CyberGrid = () => (
   />
 );
 
-// ─── Efeito CRT (Atmosfera de terminal antigo) ───────────────────────────────
 const CRTScanlines = () => (
   <div
     className="fixed inset-0 z-0 pointer-events-none opacity-[0.1]"
@@ -23,13 +21,11 @@ const CRTScanlines = () => (
       backgroundImage: 'linear-gradient(rgba(0,0,0,0.5) 50%, transparent 50%)',
       backgroundSize: '100% 4px',
     }}
-  ></div>
+  />
 );
 
-// ─── Elementos de Atmosfera ────────────────────────────────────────────────
 const BunkerAtmosphere = () => (
   <>
-    {/* Textura de "poeira/terra" sutil no fundo */}
     <div
       className="fixed inset-0 pointer-events-none z-0 opacity-[0.08]"
       style={{
@@ -37,17 +33,15 @@ const BunkerAtmosphere = () => (
         backgroundSize: '20px 20px',
       }}
     />
-
-    {/* Bordas reforçadas (Parede de bunker) */}
-    <div className="fixed inset-4 border-2 border-neutral-800 pointer-events-none z-0 hidden md:block"></div>
-
-    {/* Canos laterais decorativos */}
-    <div className="fixed top-0 left-6 h-full w-3 bg-neutral-900 border-x border-neutral-800 pointer-events-none z-0 hidden lg:block"></div>
-    <div className="fixed top-0 right-6 h-full w-3 bg-neutral-900 border-x border-neutral-800 pointer-events-none z-0 hidden lg:block"></div>
+    <div className="fixed inset-4 border-2 border-neutral-800 pointer-events-none z-0 hidden md:block" />
+    <div className="fixed top-0 left-6 h-full w-3 bg-neutral-900 border-x border-neutral-800 pointer-events-none z-0 hidden lg:block" />
+    <div className="fixed top-0 right-6 h-full w-3 bg-neutral-900 border-x border-neutral-800 pointer-events-none z-0 hidden lg:block" />
+    <div className="crack-line fixed inset-0 pointer-events-none z-0" />
+    <div className="spray-red fixed top-0 left-0 w-1 h-1 z-0" />
+    <div className="spray-cyan fixed bottom-0 right-0 w-1 h-1 z-0" />
   </>
 );
 
-// ─── Ícone do Google ──────────────────────────────────────────────────────────
 const GoogleIcon = () => (
   <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24">
     <path
@@ -90,56 +84,57 @@ const Step1Login = ({ onLoginSuccess }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0c0c0c] flex flex-col items-center justify-center px-4 relative overflow-hidden">
+    <div className="min-h-screen bg-[#0c0c0c] flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden">
       <CyberGrid />
       <BunkerAtmosphere />
       <CRTScanlines />
 
-      {/* Container do Bunker (Aumentado para max-w-3xl) */}
-      <div className="relative z-10 max-w-3xl w-full text-center bg-[#0c0c0c]/90 p-8 md:p-12 border border-neutral-800 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+      <div
+        className="relative z-10 max-w-3xl w-full text-center bg-[#0c0c0c]/90 p-6 md:p-12 border border-neutral-800 shadow-[0_20px_50px_rgba(0,0,0,0.8)] pichacao"
+        data-tag="DIG DEEPER"
+      >
         {/* Status bar */}
-        <div className="mb-8 flex justify-between items-center px-2">
+        <div className="mb-6 md:mb-8 flex justify-between items-center px-2">
           <span className="font-mono text-[10px] text-neutral-500 tracking-[0.3em] uppercase">
-            Sector: RS_01
+            Sector: BR_01
           </span>
-          <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+          <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
         </div>
 
-        {/* Título - Estilo Brand Stamp (Forçado a alinhar ao container) */}
-        <div className="mb-10 mt-4 w-full">
-          <div className="relative px-6 py-4 border-2 border-neutral-800 bg-neutral-900/20 backdrop-blur-sm shadow-[0_0_30px_rgba(0,0,0,0.5)] w-full">
+        {/* Título */}
+        <div className="mb-4 mt-2 md:mt-4 w-full">
+          <div className="crack-corner relative px-4 md:px-6 py-4 border-2 border-neutral-800 bg-neutral-900/20 w-full">
             <h2
-              className="font-sans font-black tracking-tighter leading-[0.85] text-white whitespace-nowrap text-center justify-center align-center"
+              className="font-sans font-black tracking-tighter leading-[0.85] text-white text-center"
               style={{ fontSize: 'clamp(2.2rem, 10vw, 5.5rem)' }}
             >
               UNDER<span className="text-red-600">GROUND</span>
             </h2>
-
-            {/* Linha de separação técnica */}
-            <div className="flex items-center gap-4 mt-6 mx-auto w-full max-w-[200px]">
-              <div className="h-0.5 flex-1 bg-neutral-800"></div>
+            <div className="flex items-center gap-4 mt-5 mx-auto w-full max-w-[180px]">
+              <div className="h-0.5 flex-1 bg-neutral-800" />
               <span className="font-mono text-[8px] text-neutral-600 uppercase tracking-widest whitespace-nowrap">
                 EST. 2026
               </span>
-              <div className="h-0.5 flex-1 bg-neutral-800"></div>
+              <div className="h-0.5 flex-1 bg-neutral-800" />
             </div>
           </div>
         </div>
 
-        {/* Manifesto */}
-        <div className="border-t border-b border-neutral-800 py-6 mb-8 bg-neutral-900/30">
+        <div className="stripe-obra my-5 md:my-6" />
+
+        {/* Manifesto — seus textos originais */}
+        <div className="border-t border-b border-neutral-800 py-5 md:py-6 mb-6 bg-neutral-900/30">
           <p className="font-mono text-neutral-300 text-sm leading-relaxed tracking-wide px-4">
             A superfície é ruído. <br />
             <span className="text-red-400 font-bold">
-              O bunker é a verdade.
+              A profundidade é a verdade.
             </span>
           </p>
           <p className="font-mono text-neutral-600 text-[10px] mt-3 tracking-[0.25em] uppercase">
-            Construindo o ecossistema de quem cria por instinto.
+            Construindo o ecossistema de quem cria e toca por instinto.
           </p>
         </div>
 
-        {/* Erro */}
         {error && (
           <div className="border border-red-500/50 bg-red-500/10 p-3 mb-6">
             <p className="font-mono text-red-400 text-xs tracking-wider">
@@ -148,11 +143,18 @@ const Step1Login = ({ onLoginSuccess }) => {
           </div>
         )}
 
-        {/* Botão de login */}
+        {/* Botão */}
         <button
           onClick={handleGoogleLogin}
           disabled={loading}
-          className="w-full border-2 border-red-600 bg-transparent text-white font-mono font-bold py-5 px-8 text-sm tracking-[0.18em] rounded-none uppercase transition-all duration-200 hover:bg-red-600 hover:shadow-neon-red disabled:opacity-40 disabled:cursor-not-allowed"
+          className="
+            crack-corner
+            w-full border-2 border-red-600 bg-transparent text-white
+            font-mono font-bold py-5 px-8 text-sm tracking-[0.18em]
+            rounded-none uppercase transition-all duration-200
+            hover:bg-red-600 hover:shadow-neon-red
+            disabled:opacity-40 disabled:cursor-not-allowed
+          "
         >
           {loading ? (
             <span className="animate-pulse tracking-[0.3em]">
@@ -161,13 +163,13 @@ const Step1Login = ({ onLoginSuccess }) => {
           ) : (
             <span className="flex items-center justify-center gap-3">
               <GoogleIcon />
-              CONECTAR AO BUNKER
+              CONECTAR AO UNDERGROUND
             </span>
           )}
         </button>
 
         <p className="font-mono text-neutral-700 text-[10px] mt-6 tracking-[0.3em] uppercase">
-          Acesso restrito a músicos certificados
+          Acesso restrito.
         </p>
       </div>
     </div>

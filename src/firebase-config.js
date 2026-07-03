@@ -1,25 +1,26 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-import { getAnalytics } from 'firebase/analytics';
+import { initializeApp }               from 'firebase/app';
+import { getAuth, GoogleAuthProvider }  from 'firebase/auth';
+import { getFirestore }                 from 'firebase/firestore';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// ─────────────────────────────────────────────────────────────────────────────
+// Lê as credenciais do arquivo .env (local) ou das variáveis de ambiente
+// do Vercel (produção). Nunca coloque valores reais aqui diretamente.
+//
+// CRA exige o prefixo REACT_APP_ para expor vars ao bundle.
+// ─────────────────────────────────────────────────────────────────────────────
 const firebaseConfig = {
-  apiKey: 'AIzaSyDyV_dudj0upTO7lzU2DmnIPaTqq_jsu2I',
-  authDomain: 'underground-lp.firebaseapp.com',
-  projectId: 'underground-lp',
-  storageBucket: 'underground-lp.firebasestorage.app',
-  messagingSenderId: '936563611668',
-  appId: '1:936563611668:web:3958527f0580d699266f01',
-  measurementId: 'G-3SGQY44VVY',
+  apiKey:            process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain:        process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId:         process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket:     process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId:             process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
 
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const analytics = getAnalytics(app);
+export const auth           = getAuth(app);
+export const db             = getFirestore(app);
 export const googleProvider = new GoogleAuthProvider();
 
 export default app;
